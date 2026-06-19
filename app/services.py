@@ -1,5 +1,5 @@
 import json
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as et
 from collections.abc import Callable
 
 from app.models import Book
@@ -32,12 +32,12 @@ def _serialize_json(book: Book) -> str:
 
 
 def _serialize_xml(book: Book) -> str:
-    root = ET.Element("book")
-    title = ET.SubElement(root, "title")
+    root = et.Element("book")
+    title = et.SubElement(root, "title")
     title.text = book.title
-    content = ET.SubElement(root, "content")
+    content = et.SubElement(root, "content")
     content.text = book.content
-    return ET.tostring(root, encoding="unicode")
+    return et.tostring(root, encoding="unicode")
 
 
 DISPLAYERS = {
